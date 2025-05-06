@@ -8,9 +8,8 @@ using ModpackAutoconfig.ViewModels;
 
 namespace ModpackAutoconfig.Views;
 
-public partial class MainView : UserControl
+public partial class MainView : ViewBase<MainViewModel>
 {
-    private MainViewModel viewModel = new MainViewModel();
     
     public MainView()
     {
@@ -42,10 +41,10 @@ public partial class MainView : UserControl
                 new FolderPickerOpenOptions { Title = "Select Working Directory", AllowMultiple = false});
             if (folders.Count > 0)
             {
-                viewModel.WorkingDirectory = folders[0];
+                ViewModel.WorkingDirectory = folders[0];
                 return;
             }
-            if (viewModel.WorkingDirectory is not null) return;
+            if (ViewModel.WorkingDirectory is not null) return;
         }
     }
     
