@@ -11,6 +11,20 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
-
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+<DockPanel>
+    <Menu DockPanel.Dock="Top">
+        <MenuItem Header="GTCEu Modern">
+            <MenuItem 
+                Header="Add new material..." 
+                Click="NewMaterialButton_OnClick"/>
+            <MenuItem Header="Add new recipe..." Click="WorkingDirectoryButton_OnClick"/>
+        </MenuItem>
+        <MenuItem Header="Options">
+            <MenuItem Header="Select working directory..." Click="WorkingDirectoryButton_OnClick"/>
+        </MenuItem>
+    </Menu>
+    <StackPanel>
+        <TextBlock Foreground="White" Text="{Binding WorkingDirectory, Converter={StaticResource PathConverter}, Mode=TwoWay}" />
+    </StackPanel>
+</DockPanel>
 </UserControl>
